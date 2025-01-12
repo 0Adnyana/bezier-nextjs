@@ -1,0 +1,97 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import { cn } from "@/lib/utils";
+
+const PortfolioSection = () => {
+	const [currentMovie, setCurrentMovie] = useState(0);
+
+	useEffect(() => {
+		console.log(movies[currentMovie].background);
+	}, [currentMovie]);
+
+	const movies: {
+		title: string;
+		year: number;
+		background: string;
+		description: string;
+	}[] = [
+		{
+			title: "Her Shadow’s Hold",
+			year: 2024,
+			background: "/assets/works/portfolio1.webp",
+			description:
+				"When a struggling artist is abducted by a mysterious and unhinged woman, he finds himself trapped in a nightmare where reality and obsession blur. As he uncovers her twisted motives, survival becomes a game of wits, and escaping her clutches could mean facing an even darker truth.",
+		},
+		{
+			title: "Black Echo",
+			year: 2024,
+			background: "/assets/works/portfolio2.webp",
+			description:
+				"A special ops SWAT team is sent deep into enemy territory to extract a key informant holding secrets that could prevent global catastrophe. As alliances fracture and loyalties are tested, the team must confront not only their foes but also their own moral dilemmas in the fog of war.",
+		},
+		{
+			title: "Echoes in Silence",
+			year: 2023,
+			background: "/assets/works/portfolio3.webp",
+			description:
+				"This gripping documentary unravels the chilling story of a serial killer who terrorized a small town. Through interviews with reporters, detectives, and the grieving families, Echoes in Silence pieces together the devastating impact of the crimes and the relentless pursuit of justice.",
+		},
+		{
+			title: "Heavy Lies the Crown",
+			year: 2023,
+			background: "/assets/works/portfolio4.webp",
+			description:
+				"From the gritty streets to the bright lights of the championship ring, Heavy Lies the Crown follows a determined young boxer who fights to overcome poverty, personal loss, and self-doubt. With grit and resilience, he rises against all odds to become a symbol of hope and perseverance.",
+		},
+		{
+			title: "Neon Fragments",
+			year: 2022,
+			background: "/assets/works/portfolio5.webp",
+			description:
+				"Under the neon haze of a bustling Asian metropolis, lives intertwine in a story of longing, heartbreak, and fleeting connections. With its lush green hues and poetic atmosphere, Neon Fragments captures the beauty of solitude and the bittersweet moments that define human connection.",
+		},
+	];
+
+	return (
+		<section
+			id="works"
+			className={cn(`w-full h-screen z-10 bg-cover bg-center relative overflow-hidden`)}
+			style={{ backgroundImage: `url('${movies[currentMovie].background}')` }}
+		>
+			<div className="before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-t before:from-black before:to-transparent before:to-30% before:z-[-5]"></div>
+			<div className="w-full h-full flex flex-row items-end sm:flex-col sm:items-start px-6 lg:flex-row lg:items-end justify-between sm:justify-end sm:px-12 py-16 pt-32 gap-4">
+				<div id="movie-picker" className="flex flex-col w-fit">
+					{movies.map((movie, index) => {
+						return (
+							<div
+								id="movie-1"
+								className="w-fit h-fit flex flex-row gap-2 text-white hover:text-opacity-60 hover:cursor-pointer"
+								key={index}
+								onMouseEnter={() => setCurrentMovie(index)}
+							>
+								<p className="font-inter text-2xl sm:text-5xl xl:text-6xl 2xl:text-7xl font-semibold tracking-tight text-nowrap">{movie.title}</p>
+								<p className="font-inter text-xl font-normal">{movie.year}</p>
+							</div>
+						);
+					})}
+				</div>
+				<div className="flex flex-row w-full h-fit items-end gap-2">
+					<p id="movie-description" className="text-white/75 text-sm text-justify sm:text-center h-fit w-full hidden sm:flex">
+						{movies[currentMovie].description}
+					</p>
+					<svg className="h-12 w-12 sm:h-24 sm:w-24" width="143" height="258" viewBox="0 0 143 258" fill="none" xmlns="http://www.w3.org/2000/svg">
+						<path
+							fillRule="evenodd"
+							clipRule="evenodd"
+							d="M69.1056 245.5L69.1056 0.459732H75.1056L75.1056 245.425L138.408 181.006L142.687 185.212L72.1211 257.022L0.539307 185.227L4.78826 180.991L69.1056 245.5Z"
+							fill="white"
+						/>
+					</svg>
+				</div>
+			</div>
+		</section>
+	);
+};
+
+export default PortfolioSection;
