@@ -7,42 +7,48 @@ import {
 	SidebarMenu,
 	SidebarMenuButton,
 	SidebarMenuItem,
+	useSidebar,
 } from "@/components/ui/sidebar";
 
 const items = [
 	{
-		title: "Home",
-		url: "#",
+		title: "About",
+		url: "#about",
 	},
 	{
-		title: "Inbox",
-		url: "#",
+		title: "Works",
+		url: "#works",
 	},
 	{
-		title: "Calendar",
-		url: "#",
+		title: "Services",
+		url: "#services",
 	},
 	{
-		title: "Search",
-		url: "#",
+		title: "Team",
+		url: "#team",
 	},
 	{
-		title: "Settings",
-		url: "#",
+		title: "Awards",
+		url: "#awards",
+	},
+	{
+		title: "Contact Us",
+		url: "#contact",
 	},
 ];
 
 export function AppSidebar() {
+	const { toggleSidebar, openMobile } = useSidebar();
 	return (
 		<Sidebar>
-			<SidebarContent>
+			<SidebarContent className="bg-black">
 				<SidebarGroup>
 					<SidebarGroupLabel></SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarMenu>
 							{items.map((item) => (
 								<SidebarMenuItem key={item.title}>
-									<SidebarMenuButton asChild>
+									<SidebarMenuButton asChild className="text-2xl" onClick={toggleSidebar}>
 										<a href={item.url}>
 											<span>{item.title}</span>
 										</a>
