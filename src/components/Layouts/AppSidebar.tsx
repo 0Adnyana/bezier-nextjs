@@ -38,7 +38,7 @@ const items = [
 ];
 
 export function AppSidebar() {
-	const { toggleSidebar, openMobile } = useSidebar();
+	const { toggleSidebar } = useSidebar();
 	return (
 		<Sidebar>
 			<SidebarContent className="bg-black">
