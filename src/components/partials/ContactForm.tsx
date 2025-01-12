@@ -111,7 +111,7 @@ const ContactForm = () => {
 						</FormItem>
 					)}
 				/>
-				<Button type="submit" className="mt-2 size-lg">
+				<Button type="submit" className="mt-2 size-lg bg-red-600 text-white hover:bg-red-700 hover:text-white/80">
 					Send message
 				</Button>
 			</form>

@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from "../ui/button";
 
 const AboutSection = () => {
 	return (
@@ -20,18 +21,18 @@ const AboutSection = () => {
 					Our award-winning documentary Echoes in Silence earned Best Director, Best Documentary, and Best Writing for its powerful storytelling. From
 					indie films to cinematic adventures, Bezier pushes creative boundaries to bring imagination to life.
 				</p>
-				<a
-					href="#"
-					className="flex flex-row text-sm gap-2 h-fit w-fit py-2 px-6 bg-red-600 rounded-2xl items-center hover:bg-red-700 transition ease-in-out duration-150"
-				>
-					MORE ABOUT US
-					<svg className="h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-						<polygon
-							fill="currentColor"
-							points="359.873 121.377 337.246 144.004 433.243 240.001 16 240.001 16 240.002 16 272.001 16 272.002 433.24 272.002 337.246 367.996 359.873 390.623 494.498 256 359.873 121.377"
-							className="ci-primary"
-						/>
-					</svg>
+
+				<a href="#">
+					<Button className="mt-2 size-lg bg-red-600 text-white hover:bg-red-700 hover:text-white/80 flex flex-row w-fit gap-2">
+						MORE ABOUT US
+						<svg className="h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+							<polygon
+								fill="currentColor"
+								points="359.873 121.377 337.246 144.004 433.243 240.001 16 240.001 16 240.002 16 272.001 16 272.002 433.24 272.002 337.246 367.996 359.873 390.623 494.498 256 359.873 121.377"
+								className="ci-primary"
+							/>
+						</svg>
+					</Button>
 				</a>
 			</div>
 		</section>
