@@ -1,15 +1,14 @@
 import React from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import Autoplay from "embla-carousel-autoplay";
+import Image from "next/image";
 
 const ServiceSection = () => {
 	return (
-		<section
-			id="services"
-			className="w-full h-fit z-10 bg-[url('/assets/backgrounds/pexels-ron-lach.jpg')] bg-cover bg-center relative overflow-hidden px-6 sm:px-12 py-20 scroll-mt-28"
-		>
-			<div className="before:content-[''] before:absolute before:inset-0 before:block before:bg-black before:bg-opacity-80 before:z-[-5]"></div>
-			<div className="before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-b before:from-black before:to-transparent before:z-[-5]"></div>
+		<section id="services" className="w-full h-fit z-10 relative overflow-hidden px-6 sm:px-12 py-20 scroll-mt-28">
+			<Image src="/assets/backgrounds/pexels-ron-lach.jpg" fill alt="" placeholder="empty" style={{ objectFit: "cover", zIndex: "-10" }} />
+			<div className="absolute inset-0 bg-black bg-opacity-80 z-[-5]"></div>
+			<div className="absolute inset-0 bg-gradient-to-b from-black to-transparent z-[-5]"></div>
 			<div id="services-container" className="flex lg:flex-row flex-col-reverse gap-12 justify-center items-center scroll-mt-56 h-fit">
 				<div className="lg:w-[50%] w-full h-fit p-4 ">
 					<Carousel

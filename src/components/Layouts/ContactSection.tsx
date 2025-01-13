@@ -1,5 +1,6 @@
 import React from "react";
 import ContactForm from "../partials/ContactForm";
+import Image from "next/image";
 
 const ContactSection = () => {
 	return (
@@ -7,8 +8,9 @@ const ContactSection = () => {
 			id="contact"
 			className="w-full h-fit z-10 bg-[url('/assets/backgrounds/pexels-minhle.jpg')] bg-cover bg-center relative overflow-hidden px-6 sm:px-12 py-20 justify-center items-center flex flex-col scroll-mt-28"
 		>
-			<div className="before:content-[''] before:absolute before:inset-0 before:block before:bg-black before:bg-opacity-50 before:z-[-5]"></div>
-			<div className="before:content-[''] before:absolute before:inset-0 before:block before:bg-gradient-to-b before:from-black before:to-transparent before:to-10% before:z-[-5]"></div>
+			<Image src="/assets/backgrounds/pexels-minhle.jpg" fill alt="" placeholder="empty" style={{ objectFit: "cover", zIndex: "-10" }} />
+			<div className="absolute inset-0 bg-black bg-opacity-50 z-[-5]"></div>
+			<div className="absolute inset-0 bg-gradient-to-b from-black to-transparent to-10% z-[-5]"></div>
 			<div id="contact-container" className="flex flex-col lg:w-[50%] sm:w-fit justify-center items-center bg-black p-8 gap-2" data-aos="fade-up">
 				<div className="flex flex-col gap-4 justify-start">
 					<h1 className="text-white text-4xl font-bold">Ready to Roll?</h1>
