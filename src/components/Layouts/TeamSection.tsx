@@ -35,7 +35,9 @@ const TeamSection = () => {
 				</div>
 				<div id="team-container" className="flex lg:flex-row gap-8 flex-wrap justify-center items-center">
 					{team.map((member, index) => {
-						return <TeamCard imageSrc={member.imageSrc} name={member.name} position={member.position} key={index} />;
+						return (
+							<TeamCard imageSrc={member.imageSrc} name={member.name} position={member.position} key={index} aosDelay={`${index * 200 + 100}`} />
+						);
 					})}
 				</div>
 			</div>
