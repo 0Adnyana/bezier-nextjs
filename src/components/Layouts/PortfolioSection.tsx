@@ -1,12 +1,44 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
 const PortfolioSection = () => {
 	const [currentMovie, setCurrentMovie] = useState(0);
-	const [videoLoaded, setVideoLoaded] = useState(false);
+	const [blur, setBlur] = useState("backdrop-blur-2xl");
+
+	const timeoutRef = useRef<any | null>(null);
+	const intervalRef = useRef<any | null>(null);
+
+	useEffect(() => {
+		const changeBackground = () => {
+			setCurrentMovie((prevMovie) => (prevMovie + 1) % movies.length);
+		};
+
+		intervalRef.current = setInterval(changeBackground, 5000);
+
+		return () => clearInterval(intervalRef.current);
+	}, []);
+
+	useEffect(() => {
+		clearTimeout(timeoutRef.current);
+
+		setBlur("backdrop-blur-2xl");
+		timeoutRef.current = setTimeout(() => {
+			setBlur("backdrop-blur-none");
+		}, 700);
+
+		return () => clearTimeout(timeoutRef.current);
+	}, [currentMovie]);
+
+	const handleMouseEnter = (index: number) => {
+		clearInterval(intervalRef.current);
+		setCurrentMovie(index);
+		intervalRef.current = setInterval(() => {
+			setCurrentMovie((prevMovie) => (prevMovie + 1) % movies.length);
+		}, 5000);
+	};
 
 	const movies: {
 		title: string;
@@ -65,26 +97,26 @@ const PortfolioSection = () => {
 
 	return (
 		<section id="works" className="w-full h-screen relative">
-			<Image
-				src={`${movies[currentMovie].thumbnail}`}
-				fill
-				alt={`${movies[currentMovie].alt}`}
-				className={cn(`w-full h-full object-cover z-[-7] transition-opacity duration-300 ease-in-out`, videoLoaded ? "opacity-0" : "opacity-100")}
-			/>
+			{movies.map((movie, index) => {
+				return (
+					<Image
+						key={index}
+						src={`${movie.thumbnail}`}
+						fill
+						alt={`${movie.alt}`}
+						className={cn(`w-full h-full object-cover z-[-12]`, currentMovie !== index ? "hidden" : "relative")}
+					/>
+				);
+			})}
 			<video
 				autoPlay
 				loop
 				muted
 				playsInline
-				className={cn(`w-full h-full object-cover z-[-10] absolute `)}
+				className={cn(`w-full h-full object-cover z-[-10] absolute`)}
 				src={`${movies[currentMovie].videoSrc}`}
-				onLoadStart={() => {
-					setVideoLoaded(false);
-				}}
-				onCanPlayThrough={() => {
-					setVideoLoaded(true);
-				}}
 			></video>
+			<div className={cn(`absolute inset-0 z-[-5] transition ease-out duration-700`, blur)}></div>
 			<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-[-5]"></div>
 			<div className="w-full h-full flex flex-row sm:flex-col lg:flex-row items-end sm:items-start lg:items-end justify-between sm:justify-end px-6 sm:px-12 py-16 pt-32 gap-4">
 				<div id="movie-picker" className="flex flex-col w-fit">
@@ -92,9 +124,11 @@ const PortfolioSection = () => {
 						return (
 							<div
 								id="movie-1"
-								className="w-fit h-fit flex flex-row gap-2 text-white hover:text-opacity-60 hover:cursor-pointer"
+								className={cn(`w-fit h-fit flex flex-row gap-2 text-white hover:cursor-pointer`, currentMovie === index && "text-opacity-60 ")}
 								key={index}
-								onMouseEnter={() => setCurrentMovie(index)}
+								onMouseEnter={() => {
+									handleMouseEnter(index);
+								}}
 							>
 								<p className="font-inter text-2xl sm:text-5xl xl:text-6xl 2xl:text-7xl font-semibold tracking-tight text-nowrap">{movie.title}</p>
 								<p className="font-inter text-xl font-normal">{movie.year}</p>
