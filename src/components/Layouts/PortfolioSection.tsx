@@ -122,7 +122,7 @@ const PortfolioSection = () => {
 					/>
 				);
 			})}
-			{imagesLoadedCount === totalImages && (
+			{imagesLoaded && (
 				<video
 					autoPlay
 					loop
