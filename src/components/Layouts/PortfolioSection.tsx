@@ -7,6 +7,7 @@ import Image from "next/image";
 const PortfolioSection = () => {
 	const [currentMovie, setCurrentMovie] = useState(0);
 	const [blur, setBlur] = useState("backdrop-blur-2xl");
+	const [imagesLoaded, setImagesLoaded] = useState(false);
 
 	const timeoutRef = useRef<any | null>(null);
 	const intervalRef = useRef<any | null>(null);
@@ -38,6 +39,10 @@ const PortfolioSection = () => {
 		intervalRef.current = setInterval(() => {
 			setCurrentMovie((prevMovie) => (prevMovie + 1) % movies.length);
 		}, 5000);
+	};
+
+	const handleImageLoad = () => {
+		setImagesLoaded(true);
 	};
 
 	const movies: {
@@ -105,17 +110,21 @@ const PortfolioSection = () => {
 						fill
 						alt={`${movie.alt}`}
 						className={cn(`w-full h-full object-cover z-[-12]`, currentMovie !== index ? "hidden" : "relative")}
+						onLoad={handleImageLoad}
 					/>
 				);
 			})}
-			<video
-				autoPlay
-				loop
-				muted
-				playsInline
-				className={cn(`w-full h-full object-cover z-[-10] absolute`)}
-				src={`${movies[currentMovie].videoSrc}`}
-			></video>
+			{imagesLoaded && (
+				<video
+					autoPlay
+					loop
+					muted
+					playsInline
+					className={cn(`w-full h-full object-cover z-[-10] absolute`)}
+					src={`${movies[currentMovie].videoSrc}`}
+				></video>
+			)}
+
 			<div className={cn(`absolute inset-0 z-[-5] transition ease-out duration-500`, blur)}></div>
 			<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-[-5]"></div>
 			<div className="w-full h-full flex flex-row sm:flex-col lg:flex-row items-end sm:items-start lg:items-end justify-between sm:justify-end px-6 sm:px-12 py-16 pt-32 gap-4">
