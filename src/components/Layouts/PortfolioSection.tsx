@@ -90,6 +90,9 @@ const PortfolioSection = () => {
 	const handleMouseEnter = (index: number) => {
 		clearInterval(intervalRef.current);
 		setCurrentMovie(index);
+	};
+
+	const handleMouseLeave = () => {
 		intervalRef.current = setInterval(() => {
 			setCurrentMovie((prevMovie) => (prevMovie + 1) % movies.length);
 		}, 5000);
@@ -129,9 +132,8 @@ const PortfolioSection = () => {
 								id="movie-1"
 								className={cn(`w-fit h-fit flex flex-row gap-2 text-white hover:cursor-pointer`, currentMovie === index && "text-opacity-60 ")}
 								key={index}
-								onMouseEnter={() => {
-									handleMouseEnter(index);
-								}}
+								onMouseEnter={() => handleMouseEnter(index)}
+								onMouseLeave={handleMouseLeave}
 							>
 								<p className="font-inter text-2xl sm:text-5xl xl:text-6xl 2xl:text-7xl font-semibold tracking-tight text-nowrap">{movie.title}</p>
 								<p className="font-inter text-xl font-normal">{movie.year}</p>
