@@ -27,7 +27,7 @@ const PortfolioSection = () => {
 		setBlur("backdrop-blur-2xl");
 		timeoutRef.current = setTimeout(() => {
 			setBlur("backdrop-blur-none");
-		}, 700);
+		}, 500);
 
 		return () => clearTimeout(timeoutRef.current);
 	}, [currentMovie]);
@@ -116,7 +116,7 @@ const PortfolioSection = () => {
 				className={cn(`w-full h-full object-cover z-[-10] absolute`)}
 				src={`${movies[currentMovie].videoSrc}`}
 			></video>
-			<div className={cn(`absolute inset-0 z-[-5] transition ease-out duration-700`, blur)}></div>
+			<div className={cn(`absolute inset-0 z-[-5] transition ease-out duration-500`, blur)}></div>
 			<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-[-5]"></div>
 			<div className="w-full h-full flex flex-row sm:flex-col lg:flex-row items-end sm:items-start lg:items-end justify-between sm:justify-end px-6 sm:px-12 py-16 pt-32 gap-4">
 				<div id="movie-picker" className="flex flex-col w-fit">
