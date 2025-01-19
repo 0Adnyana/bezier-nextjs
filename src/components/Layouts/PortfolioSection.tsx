@@ -105,6 +105,7 @@ const PortfolioSection = () => {
 						fill
 						alt={`${movie.alt}`}
 						className={cn(`w-full h-full object-cover z-[-12]`, currentMovie !== index ? "hidden" : "relative")}
+						priority={true}
 					/>
 				);
 			})}
