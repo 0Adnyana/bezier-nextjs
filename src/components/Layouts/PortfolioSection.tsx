@@ -62,18 +62,9 @@ const movies: {
 const PortfolioSection = () => {
 	const [currentMovie, setCurrentMovie] = useState(0);
 	const [blur, setBlur] = useState("backdrop-blur-2xl");
-	const [imagesLoaded, setImagesLoaded] = useState(false);
-	const [imagesLoadedCount, setImagesLoadedCount] = useState(0);
-	const totalImages = movies.length;
 
 	const timeoutRef = useRef<any | null>(null);
 	const intervalRef = useRef<any | null>(null);
-
-	useEffect(() => {
-		if (imagesLoadedCount === totalImages) {
-			setImagesLoaded(true);
-		}
-	}, [imagesLoadedCount]);
 
 	useEffect(() => {
 		const changeBackground = () => {
@@ -104,10 +95,6 @@ const PortfolioSection = () => {
 		}, 5000);
 	};
 
-	const handleImageLoad = () => {
-		setImagesLoadedCount((prevCount) => prevCount + 1);
-	};
-
 	return (
 		<section id="works" className="w-full h-screen relative">
 			{movies.map((movie, index) => {
@@ -118,20 +105,18 @@ const PortfolioSection = () => {
 						fill
 						alt={`${movie.alt}`}
 						className={cn(`w-full h-full object-cover z-[-12]`, currentMovie !== index ? "hidden" : "relative")}
-						onLoad={handleImageLoad}
 					/>
 				);
 			})}
-			{imagesLoaded && (
-				<video
-					autoPlay
-					loop
-					muted
-					playsInline
-					className={cn(`w-full h-full object-cover z-[-10] absolute`)}
-					src={`${movies[currentMovie].videoSrc}`}
-				></video>
-			)}
+
+			<video
+				autoPlay
+				loop
+				muted
+				playsInline
+				className={cn(`w-full h-full object-cover z-[-10] absolute`)}
+				src={`${movies[currentMovie].videoSrc}`}
+			></video>
 
 			<div className={cn(`absolute inset-0 z-[-5] transition ease-out duration-500`, blur)}></div>
 			<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-[-5]"></div>
