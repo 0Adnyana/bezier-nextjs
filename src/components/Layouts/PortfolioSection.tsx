@@ -4,13 +4,76 @@ import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 
+const movies: {
+	title: string;
+	year: number;
+	videoSrc: string;
+	thumbnail: string;
+	description: string;
+	alt?: string;
+}[] = [
+	{
+		title: "Her Shadow’s Hold",
+		year: 2024,
+		videoSrc: "/assets/works/portfolio1.mp4",
+		thumbnail: "/assets/works/portfolio1.png",
+		description:
+			"When a struggling artist is abducted by a mysterious and unhinged woman, he finds himself trapped in a nightmare where reality and obsession blur. As he uncovers her twisted motives, survival becomes a game of wits, and escaping her clutches could mean facing an even darker truth.",
+		alt: "Image of Her Shadow’s Hold",
+	},
+	{
+		title: "Black Echo",
+		year: 2024,
+		videoSrc: "/assets/works/portfolio2.mp4",
+		thumbnail: "/assets/works/portfolio2.png",
+		description:
+			"A special ops SWAT team is sent deep into enemy territory to extract a key informant holding secrets that could prevent global catastrophe. As alliances fracture and loyalties are tested, the team must confront not only their foes but also their own moral dilemmas in the fog of war.",
+		alt: "Image of Black Echo",
+	},
+	{
+		title: "Echoes in Silence",
+		year: 2023,
+		videoSrc: "/assets/works/portfolio3.mp4",
+		thumbnail: "/assets/works/portfolio3.png",
+		description:
+			"This gripping documentary unravels the chilling story of a serial killer who terrorized a small town. Through interviews with reporters, detectives, and the grieving families, Echoes in Silence pieces together the devastating impact of the crimes and the relentless pursuit of justice.",
+		alt: "Image of Echoes in Silence",
+	},
+	{
+		title: "Heavy Lies the Crown",
+		year: 2023,
+		videoSrc: "/assets/works/portfolio4.mp4",
+		thumbnail: "/assets/works/portfolio4.png",
+		description:
+			"From the gritty streets to the bright lights of the championship ring, Heavy Lies the Crown follows a determined young boxer who fights to overcome poverty, personal loss, and self-doubt. With grit and resilience, he rises against all odds to become a symbol of hope and perseverance.",
+		alt: "Image of Heavy Lies the Crown",
+	},
+	{
+		title: "Neon Fragments",
+		year: 2022,
+		videoSrc: "/assets/works/portfolio5.mp4",
+		thumbnail: "/assets/works/portfolio5.png",
+		description:
+			"Under the neon haze of a bustling Asian metropolis, lives intertwine in a story of longing, heartbreak, and fleeting connections. With its lush green hues and poetic atmosphere, Neon Fragments captures the beauty of solitude and the bittersweet moments that define human connection.",
+		alt: "Image of Neon Fragments",
+	},
+];
+
 const PortfolioSection = () => {
 	const [currentMovie, setCurrentMovie] = useState(0);
 	const [blur, setBlur] = useState("backdrop-blur-2xl");
 	const [imagesLoaded, setImagesLoaded] = useState(false);
+	const [imagesLoadedCount, setImagesLoadedCount] = useState(0);
+	const totalImages = movies.length;
 
 	const timeoutRef = useRef<any | null>(null);
 	const intervalRef = useRef<any | null>(null);
+
+	useEffect(() => {
+		if (imagesLoadedCount === totalImages) {
+			setImagesLoaded(true);
+		}
+	}, [imagesLoadedCount]);
 
 	useEffect(() => {
 		const changeBackground = () => {
@@ -42,63 +105,8 @@ const PortfolioSection = () => {
 	};
 
 	const handleImageLoad = () => {
-		setImagesLoaded(true);
+		setImagesLoadedCount((prevCount) => prevCount + 1);
 	};
-
-	const movies: {
-		title: string;
-		year: number;
-		videoSrc: string;
-		thumbnail: string;
-		description: string;
-		alt?: string;
-	}[] = [
-		{
-			title: "Her Shadow’s Hold",
-			year: 2024,
-			videoSrc: "/assets/works/portfolio1.mp4",
-			thumbnail: "/assets/works/portfolio1.png",
-			description:
-				"When a struggling artist is abducted by a mysterious and unhinged woman, he finds himself trapped in a nightmare where reality and obsession blur. As he uncovers her twisted motives, survival becomes a game of wits, and escaping her clutches could mean facing an even darker truth.",
-			alt: "Image of Her Shadow’s Hold",
-		},
-		{
-			title: "Black Echo",
-			year: 2024,
-			videoSrc: "/assets/works/portfolio2.mp4",
-			thumbnail: "/assets/works/portfolio2.png",
-			description:
-				"A special ops SWAT team is sent deep into enemy territory to extract a key informant holding secrets that could prevent global catastrophe. As alliances fracture and loyalties are tested, the team must confront not only their foes but also their own moral dilemmas in the fog of war.",
-			alt: "Image of Black Echo",
-		},
-		{
-			title: "Echoes in Silence",
-			year: 2023,
-			videoSrc: "/assets/works/portfolio3.mp4",
-			thumbnail: "/assets/works/portfolio3.png",
-			description:
-				"This gripping documentary unravels the chilling story of a serial killer who terrorized a small town. Through interviews with reporters, detectives, and the grieving families, Echoes in Silence pieces together the devastating impact of the crimes and the relentless pursuit of justice.",
-			alt: "Image of Echoes in Silence",
-		},
-		{
-			title: "Heavy Lies the Crown",
-			year: 2023,
-			videoSrc: "/assets/works/portfolio4.mp4",
-			thumbnail: "/assets/works/portfolio4.png",
-			description:
-				"From the gritty streets to the bright lights of the championship ring, Heavy Lies the Crown follows a determined young boxer who fights to overcome poverty, personal loss, and self-doubt. With grit and resilience, he rises against all odds to become a symbol of hope and perseverance.",
-			alt: "Image of Heavy Lies the Crown",
-		},
-		{
-			title: "Neon Fragments",
-			year: 2022,
-			videoSrc: "/assets/works/portfolio5.mp4",
-			thumbnail: "/assets/works/portfolio5.png",
-			description:
-				"Under the neon haze of a bustling Asian metropolis, lives intertwine in a story of longing, heartbreak, and fleeting connections. With its lush green hues and poetic atmosphere, Neon Fragments captures the beauty of solitude and the bittersweet moments that define human connection.",
-			alt: "Image of Neon Fragments",
-		},
-	];
 
 	return (
 		<section id="works" className="w-full h-screen relative">
@@ -114,7 +122,7 @@ const PortfolioSection = () => {
 					/>
 				);
 			})}
-			{imagesLoaded && (
+			{imagesLoadedCount === totalImages && (
 				<video
 					autoPlay
 					loop
