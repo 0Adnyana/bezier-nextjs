@@ -131,7 +131,7 @@ const PortfolioSection = () => {
 						loop
 						muted
 						playsInline
-						className={cn(`fixed left-0 top-0 w-0 h-0 opacity-0 hidden sm:fixed`, !isLoaded ? "sm:hidden" : "")}
+						className={cn(`fixed left-0 top-0 w-0 h-0 opacity-0`, !isLoaded ? "hidden" : "")}
 						src={`${movie.videoSrc}`}
 						onCanPlayThrough={() => {
 							isLoaded = true;
