@@ -122,24 +122,6 @@ const PortfolioSection = () => {
 				src={`${movies[currentMovie].videoSrc}`}
 			></video>
 
-			{movies.map((movie, index) => {
-				let isLoaded = false;
-				return (
-					<video
-						key={index}
-						autoPlay
-						loop
-						muted
-						playsInline
-						className={cn(`fixed left-0 top-0 w-0 h-0 opacity-0`, !isLoaded ? "hidden" : "")}
-						src={`${movie.videoSrc}`}
-						onCanPlayThrough={() => {
-							isLoaded = true;
-						}}
-					></video>
-				);
-			})}
-
 			<div className={cn(`absolute inset-0 z-[-5] transition ease-out duration-500`, blur)}></div>
 			<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-[-5]"></div>
 			<div className="w-full h-full flex flex-row sm:flex-col lg:flex-row items-end sm:items-start lg:items-end justify-between sm:justify-end px-6 sm:px-12 py-16 pt-32 gap-4">
