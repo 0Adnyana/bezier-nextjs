@@ -71,7 +71,7 @@ const PortfolioSection = () => {
 			setCurrentMovie((prevMovie) => (prevMovie + 1) % movies.length);
 		};
 
-		intervalRef.current = setInterval(changeBackground, 5000);
+		intervalRef.current = setInterval(changeBackground, 15000);
 
 		return () => clearInterval(intervalRef.current);
 	}, []);
