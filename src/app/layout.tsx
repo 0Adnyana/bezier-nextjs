@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import PrelineScript from "@/components/PrelineScript";
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -20,6 +21,7 @@ export default function RootLayout({
 	return (
 		<html lang="en" className="scroll-smooth">
 			<body className={`${inter.variable} antialiased text-white bg-black dark`}>{children}</body>
+			<PrelineScript />
 		</html>
 	);
 }
