@@ -102,6 +102,21 @@ const PortfolioSection = () => {
 		<section id="works" className="w-full h-screen relative">
 			{movies.map((movie, index) => {
 				return (
+					<video
+						key={index}
+						autoPlay
+						loop
+						muted
+						playsInline
+						className={cn(`w-0 h-0 object-cover absolute opacity-0`)}
+						src={`${movies[currentMovie].videoSrc}`}
+					></video>
+				);
+			})}
+
+
+			{movies.map((movie, index) => {
+				return (
 					<Image
 						key={index}
 						src={`${movie.thumbnail}`}
