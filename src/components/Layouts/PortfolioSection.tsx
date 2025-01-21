@@ -71,7 +71,7 @@ const PortfolioSection = () => {
 			setCurrentMovie((prevMovie) => (prevMovie + 1) % movies.length);
 		};
 
-		intervalRef.current = setInterval(changeBackground, 15000);
+		intervalRef.current = setInterval(changeBackground, 10000);
 
 		return () => clearInterval(intervalRef.current);
 	}, []);
@@ -95,7 +95,7 @@ const PortfolioSection = () => {
 	const handleMouseLeave = () => {
 		intervalRef.current = setInterval(() => {
 			setCurrentMovie((prevMovie) => (prevMovie + 1) % movies.length);
-		}, 5000);
+		}, 10000);
 	};
 
 	return (
