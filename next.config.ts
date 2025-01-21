@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { withNextVideo } from "next-video/process";
 
 const nextConfig: NextConfig = {
 	eslint: {
@@ -8,4 +9,4 @@ const nextConfig: NextConfig = {
 	},
 };
 
-export default nextConfig;
+export default withNextVideo(nextConfig);

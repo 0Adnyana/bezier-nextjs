@@ -1,0 +1,20 @@
+{
+	"status": "ready",
+	"originalFilePath": "videos\\portfolio2.mp4",
+	"provider": "mux",
+	"providerMetadata": {
+		"mux": {
+			"uploadId": "YEnfCid6Zoa029P02DXft91A51EItrgr8m5ijKY5SrCMI",
+			"assetId": "udgKWd02I00am5SGs00GCDYnsVjerx2HRTwGPWzB02heExc",
+			"playbackId": "L01REl49sjUpgj8sOq4Vd01RIDcmhjHv2pW5OnBEmzY024"
+		}
+	},
+	"createdAt": 1737451252652,
+	"updatedAt": 1737451270858,
+	"size": 7991096,
+	"sources": [
+		{ "src": "https://stream.mux.com/L01REl49sjUpgj8sOq4Vd01RIDcmhjHv2pW5OnBEmzY024.m3u8?min_resolution=720p", "type": "application/x-mpegURL" }
+	],
+	"poster": "https://image.mux.com/L01REl49sjUpgj8sOq4Vd01RIDcmhjHv2pW5OnBEmzY024/thumbnail.webp?time=0",
+	"blurDataURL": "data:image/webp;base64,UklGRmQAAABXRUJQVlA4IFgAAACwAQCdASoQAAkAAQAcJaQAAvrRc/1gAP72w4+y+Y73iQKyQ+cEGyT3zbvXZ1ftvn8mPhL6iaR/emYPz/ie1OOSn2MB1Le+RPvOBwcS9BS+xho0ePt6AAAA"
+}

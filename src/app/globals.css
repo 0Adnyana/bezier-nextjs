@@ -88,3 +88,7 @@
 		@apply bg-background text-foreground;
 	}
 }
+
+.next-video-bg-video::part(base) {
+	object-fit: cover !important; /* Make sure video covers the container */
+}

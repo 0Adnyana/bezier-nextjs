@@ -6,12 +6,11 @@ const AboutSection = () => {
 		<section
 			id="about"
 			className="w-full h-fit bg-black bg-cover bg-center flex flex-col sm:flex-row justify-center items-start px-6 sm:px-12 py-20 gap-2 sm:gap-12 scroll-mt-28"
-			data-aos="fade-up"
 		>
-			<div className="flex flex-col w-full sm:w-52 h-fit items-center justify-center">
+			<div className="flex flex-col w-full sm:w-52 h-fit items-center justify-center" data-aos="fade-up">
 				<h1 className="text-white text-4xl sm:text-5xl font-bold">FROM VISION TO REALITY</h1>
 			</div>
-			<div id="about-container" className="flex flex-col w-full sm:w-[50%] h-fit justify-between gap-4 scroll-mt-56">
+			<div id="about-container" className="flex flex-col w-full sm:w-[50%] h-fit justify-between gap-4 scroll-mt-56" data-aos="fade-up">
 				<p className="text-white/75 text-sm text-justify">
 					At Bezier, we believe that every story deserves to be told with passion, precision, and creativity. Our mission is to transform ideas into
 					visually captivating narratives that resonate with audiences. With a focus on artistry and innovation, we bring visions to life, one frame
