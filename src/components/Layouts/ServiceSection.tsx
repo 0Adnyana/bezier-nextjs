@@ -1,9 +1,13 @@
 import React from "react";
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import Carousel from "@/components/ui/Carousel";
 import Image from "next/image";
 
 const ServiceSection = () => {
+	const content = [
+		{ src: "/assets/services/pexels-cottonbro-.jpg", alt: "..." },
+		{ src: "/assets/services/pexels-maksim-romashkin.jpg", alt: "..." },
+		{ src: "/assets/services/pexels-pixabay.jpg", alt: "..." },
+	];
 	return (
 		<section id="services" className="w-full h-fit z-10 relative overflow-hidden px-6 sm:px-12 py-20 scroll-mt-28">
 			<Image src="/assets/backgrounds/pexels-ron-lach.jpg" fill alt="" placeholder="empty" style={{ objectFit: "cover", zIndex: "-10" }} />
@@ -11,30 +15,7 @@ const ServiceSection = () => {
 			<div className="absolute inset-0 bg-gradient-to-b from-black to-transparent z-[-5]"></div>
 			<div id="services-container" className="flex lg:flex-row flex-col-reverse gap-12 justify-center items-center scroll-mt-56 h-fit">
 				<div className="lg:w-[50%] w-full h-fit p-4 ">
-					<Carousel
-						className="dark relative w-full h-fit justify-center"
-						data-aos="fade-up"
-						data-aos-delay="200"
-						opts={{
-							align: "start",
-							loop: true,
-						}}
-						plugins={[Autoplay()]}
-					>
-						<CarouselContent className="w-full h-48 sm:h-96">
-							<CarouselItem className="basis-full">
-								<img src="/assets/services/pexels-cottonbro-.jpg" className="w-full h-full object-cover" alt="..." />
-							</CarouselItem>
-							<CarouselItem className="basis-full">
-								<img src="/assets/services/pexels-maksim-romashkin.jpg" className="w-full h-full object-cover" alt="..." />
-							</CarouselItem>
-							<CarouselItem className="basis-full">
-								<img src="/assets/services/pexels-pixabay.jpg" className="w-full h-full object-cover" alt="..." />
-							</CarouselItem>
-						</CarouselContent>
-						<CarouselPrevious />
-						<CarouselNext />
-					</Carousel>
+					<Carousel content={content}></Carousel>
 				</div>
 
 				<div className="lg:w-[20%] sm:w-[70%] w-full h-fit flex flex-col lg:gap-12 md:gap-4 gap-2" data-aos="fade-up-left">
