@@ -1,7 +1,6 @@
 import Image from "next/image";
 import React from "react";
 import TeamCard from "../ui/TeamCard";
-import Carousel from "../ui/Carousel";
 
 const TeamSection = () => {
 	const team = [

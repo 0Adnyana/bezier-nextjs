@@ -1,5 +1,5 @@
 import React from "react";
-import Carousel from "@/components/ui/Carousel";
+import Carousel from "../ui/Carousel";
 import Image from "next/image";
 
 const ServiceSection = () => {
