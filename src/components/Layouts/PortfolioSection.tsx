@@ -53,6 +53,20 @@ const movies: {
 ];
 
 const PortfolioSection = () => {
+	useEffect(() => {
+		const players = document.querySelectorAll(".next-video-bg-video");
+
+		players.forEach((player) => {
+			const shadowRoot = player.shadowRoot;
+			if (shadowRoot) {
+				const style = document.createElement("style");
+				style.innerHTML = "video { object-fit: cover !important;";
+
+				shadowRoot.appendChild(style);
+			}
+		});
+	}, []);
+
 	const [currentMovie, setCurrentMovie] = useState(0);
 	const [blur, setBlur] = useState("backdrop-blur-2xl");
 
@@ -96,7 +110,8 @@ const PortfolioSection = () => {
 			<BackgroundVideo
 				src={movies[currentMovie].video}
 				poster={movies[currentMovie].video.poster}
-				className="w-full h-full object-cover z-[-10]"
+				className="w-full h-full z-[-10]"
+				style={{ objectFit: "cover" }}
 			></BackgroundVideo>
 			<div className={cn(`absolute inset-0 z-[-5] transition ease-out duration-500 w-full h-full`, blur)}></div>
 			<div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-[-5] w-full h-full"></div>

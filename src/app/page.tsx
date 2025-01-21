@@ -23,7 +23,7 @@ export default function Home() {
 			<SidebarProvider>
 				<Navbar />
 				<AppSidebar />
-				<main className="">
+				<main className="w-full h-full">
 					<PortfolioSection />
 					<AboutSection />
 					<ServiceSection />
